@@ -1180,6 +1180,18 @@ error-ex@^1.3.1:
   dependencies:
     is-arrayish "^0.2.1"
 
+es-jest@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/es-jest/-/es-jest-1.1.0.tgz#a6211b3c326adde9b6d4b7411adb20bdbda82630"
+  integrity sha512-NoFGP15xsmEwAE5PFXoIeDJn2vBZEc6Z5QRB6g+xzSaGsiR02akiA1V2L9nljdDaanDlv0V55xuoxNCS90Glww==
+  dependencies:
+    esbuild "^0.8.18"
+
+esbuild@^0.8.18:
+  version "0.8.32"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.8.32.tgz#d3d679ea417925f7afaab37555e52070df317355"
+  integrity sha512-5IzQapMW/wFy5oxziHCJzawk26K3xeyrIAQPnPN3c0Q84hqRw6IfGDGfGWOdJNw5tAx77yvwqZ4r1QMpo6emJA==
+
 escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
@@ -1216,6 +1228,11 @@ esutils@^2.0.2:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.3.tgz#74d2eb4de0b8da1293711910d50775b9b710ef64"
   integrity sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==
+
+event-target-polyfill@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/event-target-polyfill/-/event-target-polyfill-0.0.2.tgz#47e35ad6283aaca2f0148772d9ceedc30fd58d16"
+  integrity sha512-m7I5gwno/p6H0wRJ7jsjJnbdcA8Do3mAf57vUphb1X+DUHAEMhjUmg8MBAaFsB/BtUCXUl70mUPr0Iw3dvdaqQ==
 
 exec-sh@^0.3.2:
   version "0.3.4"
