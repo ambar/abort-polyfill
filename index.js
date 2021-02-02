@@ -40,9 +40,14 @@ function impl() {
       },
       set(value) {
         const handlers = getHandlers(this)
+        const handler = handlers.get(name)
+        if (handler) {
+          this.removeEventListener(name, handler)
+        }
         if (typeof value === 'function') {
-          handlers.set(name, value)
-          this.addEventListener(name, value)
+          const newHandler = value.bind(this)
+          handlers.set(name, newHandler)
+          this.addEventListener(name, newHandler)
         } else {
           handlers.set(name, null)
         }
