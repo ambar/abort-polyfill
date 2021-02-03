@@ -3,7 +3,7 @@
  */
 import {test, expect} from '@jest/globals'
 import 'event-target-polyfill'
-import '../index'
+import '../abort'
 
 test('constructs correctly', () => {
   const ac = new AbortController()
@@ -54,15 +54,6 @@ test('calls abort event', () => {
     ac.signal.addEventListener('abort', handler)
     ac.abort()
     expect(handler).toHaveBeenCalledTimes(0)
-  }
-
-  {
-    const et = new EventTarget()
-    const handler = jest.fn()
-    et.addEventListener('foo', handler)
-    et.addEventListener('foo', handler)
-    et.dispatchEvent(new Event('foo'))
-    expect(handler).toHaveBeenCalledTimes(1)
   }
 
   {

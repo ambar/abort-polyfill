@@ -65,6 +65,7 @@ function impl() {
       // https://caniuse.com/mdn-api_eventtarget_eventtarget
       signal = new EventTarget()
     } catch (e) {
+      // IE 10+ https://caniuse.com/mdn-api_messagechannel_port1
       signal = new MessageChannel().port1
     }
     Object.setPrototypeOf(signal, AbortSignal.prototype)
@@ -72,12 +73,22 @@ function impl() {
     return signal
   }
 
+  function createEvent(type) {
+    // https://caniuse.com/mdn-api_event_event
+    try {
+      return new Event(type)
+    } catch (_) {
+      // IE 9+ https://caniuse.com/customevent https://caniuse.com/mdn-api_document_createevent
+      const event = document.createEvent('Event')
+      event.initEvent('abort', false, false)
+      return event
+    }
+  }
+
   function abortSignal(signal) {
     if (signal[kAborted]) return
     signal[kAborted] = true
-    // https://caniuse.com/mdn-api_event_event
-    const event = new Event('abort')
-    signal.dispatchEvent(event)
+    signal.dispatchEvent(createEvent('abort'))
   }
 
   function AbortController() {
