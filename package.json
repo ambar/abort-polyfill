@@ -1,6 +1,6 @@
 {
   "name": "abort-polyfill",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Polyfill AbortController and AbortSignal",
   "license": "MIT",
   "main": "dist/index.js",
