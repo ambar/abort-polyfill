@@ -5,6 +5,5 @@
 /tmp
 
 # Files
-index.cjs.js
 *.log
 .DS_Store

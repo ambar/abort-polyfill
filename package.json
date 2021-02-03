@@ -3,16 +3,17 @@
   "version": "0.0.1",
   "description": "Polyfill AbortController and AbortSignal",
   "license": "MIT",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "prepare": "npm test",
-    "build": "esbuild index.js --bundle --outfile=index.cjs.js --minify-syntax",
+    "prepare": "npm test && npm run build",
+    "prebuild": "rm -rf dist",
+    "build": "esbuild index.js --bundle --outfile=dist/index.js --minify-syntax",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch --notify"
   },
   "files": [
-    "index.cjs.js",
+    "dist",
     "index.js"
   ],
   "jest": {

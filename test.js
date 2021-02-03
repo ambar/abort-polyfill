@@ -3,7 +3,7 @@
  */
 import {test, expect} from '@jest/globals'
 import 'event-target-polyfill'
-import '../abort'
+import './index'
 
 test('constructs correctly', () => {
   const ac = new AbortController()
