@@ -1,7 +1,12 @@
 export const abortable = (fetch) => {
   const hasNativeSupport =
     typeof Request === 'function' && 'signal' in Request.prototype
-  if (!hasNativeSupport) {
+  if (hasNativeSupport) {
+    return fetch
+  }
+
+  // xhr-based polyfill, like whatwg-fetch/cross-fetch: https://github.com/github/fetch/blob/master/fetch.js#L500
+  if (fetch.polyfill) {
     return fetch
   }
 
@@ -24,7 +29,7 @@ export const abortable = (fetch) => {
       return Promise.reject(createError())
     }
 
-    const abort = new Promise((resolve, reject) => {
+    const abort = new Promise((_, reject) => {
       signal.addEventListener('abort', function handler() {
         signal.addEventListener('abort', handler)
         reject(createError())
