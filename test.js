@@ -1,4 +1,8 @@
 /**
+ * 不同 env 环境不一样：
+ * - node: Node 16+ 有原生的 EventTarget/AbortController
+ * - jsdom：已经带有 EventTarget/AbortController polyfill
+ *
  * @jest-environment node
  */
 import {test, expect} from '@jest/globals'
