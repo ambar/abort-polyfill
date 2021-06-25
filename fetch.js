@@ -20,7 +20,7 @@ export const abortable = (fetch) => {
     }
   }
 
-  return (url, {signal, ...options}) => {
+  return (url, {signal, ...options} = {}) => {
     if (!signal) {
       return fetch(url, options)
     }
@@ -31,7 +31,7 @@ export const abortable = (fetch) => {
 
     const abort = new Promise((_, reject) => {
       signal.addEventListener('abort', function handler() {
-        signal.addEventListener('abort', handler)
+        signal.removeEventListener('abort', handler)
         reject(createError())
       })
     })

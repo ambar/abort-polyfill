@@ -7,7 +7,8 @@
  */
 import {test, expect} from '@jest/globals'
 import 'event-target-polyfill'
-import './index'
+import {AbortController, AbortSignal} from './abort'
+import {abortable} from './fetch'
 
 test('constructs correctly', () => {
   const ac = new AbortController()
@@ -69,4 +70,23 @@ test('calls abort event', () => {
     ac.abort()
     expect(handler).toHaveBeenCalledTimes(2)
   }
+})
+
+test('aborts request', async () => {
+  const delay = (ms) => new Promise((r) => setTimeout(r, ms))
+  const fetch = jest.fn(() => delay(10))
+  const onabort = jest.fn()
+  const myFetch = abortable(fetch)
+  expect(fetch).not.toBe(myFetch)
+
+  const ac = new AbortController()
+  ac.signal.addEventListener('abort', onabort)
+  const promise = myFetch(',', {signal: ac.signal}).then(
+    () => 1,
+    () => 0
+  )
+  ac.abort()
+  ac.abort()
+  expect(await promise).toBe(0)
+  expect(onabort).toHaveBeenCalledTimes(1)
 })

@@ -13,8 +13,7 @@
     "test:watch": "jest --watch --notify"
   },
   "files": [
-    "dist",
-    "index.js"
+    "dist"
   ],
   "jest": {
     "preset": "es-jest"
