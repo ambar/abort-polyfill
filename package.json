@@ -2,6 +2,7 @@
   "name": "abort-polyfill",
   "version": "0.1.1",
   "description": "Polyfill AbortController and AbortSignal",
+  "repository": "ambar/abort-polyfill",
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
